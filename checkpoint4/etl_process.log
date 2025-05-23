@@ -1,0 +1,684 @@
+2025-05-11 15:28:43,270 [ERROR] ETL process failed: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\spark_session.py", line 25, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+2025-05-11 15:32:25,450 [ERROR] ETL process failed: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: java.lang.RuntimeException: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.getWinUtilsPath(Shell.java:735)
+	at org.apache.hadoop.util.Shell.getSetPermissionCommand(Shell.java:270)
+	at org.apache.hadoop.fs.FileUtil.chmod(FileUtil.java:1139)
+	at org.apache.hadoop.fs.FileUtil.chmod(FileUtil.java:1125)
+	at org.apache.spark.util.Utils$.fetchFile(Utils.scala:489)
+	at org.apache.spark.executor.Executor.$anonfun$updateDependencies$14(Executor.scala:1163)
+	at org.apache.spark.executor.Executor.$anonfun$updateDependencies$14$adapted(Executor.scala:1155)
+	at scala.collection.TraversableLike$WithFilter.$anonfun$foreach$1(TraversableLike.scala:985)
+	at scala.collection.immutable.Map$Map1.foreach(Map.scala:193)
+	at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:984)
+	at org.apache.spark.executor.Executor.updateDependencies(Executor.scala:1155)
+	at org.apache.spark.executor.Executor.<init>(Executor.scala:330)
+	at org.apache.spark.scheduler.local.LocalEndpoint.<init>(LocalSchedulerBackend.scala:64)
+	at org.apache.spark.scheduler.local.LocalSchedulerBackend.start(LocalSchedulerBackend.scala:132)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:235)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:599)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:75)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:53)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:547)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:568)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:591)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:688)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getTimeDurationHelper(Configuration.java:1907)
+	at org.apache.hadoop.conf.Configuration.getTimeDuration(Configuration.java:1867)
+	at org.apache.hadoop.conf.Configuration.getTimeDuration(Configuration.java:1840)
+	at org.apache.hadoop.util.ShutdownHookManager.getShutdownTimeout(ShutdownHookManager.java:183)
+	at org.apache.hadoop.util.ShutdownHookManager$HookEntry.<init>(ShutdownHookManager.java:207)
+	at org.apache.hadoop.util.ShutdownHookManager.addShutdownHook(ShutdownHookManager.java:304)
+	at org.apache.spark.util.SparkShutdownHookManager.install(ShutdownHookManager.scala:181)
+	at org.apache.spark.util.ShutdownHookManager$.shutdownHooks$lzycompute(ShutdownHookManager.scala:50)
+	at org.apache.spark.util.ShutdownHookManager$.shutdownHooks(ShutdownHookManager.scala:48)
+	at org.apache.spark.util.ShutdownHookManager$.addShutdownHook(ShutdownHookManager.scala:153)
+	at org.apache.spark.util.ShutdownHookManager$.<init>(ShutdownHookManager.scala:58)
+	at org.apache.spark.util.ShutdownHookManager$.<clinit>(ShutdownHookManager.scala)
+	at org.apache.spark.util.Utils$.createTempDir(Utils.scala:242)
+	at org.apache.spark.util.SparkFileUtils.createTempDir(SparkFileUtils.scala:103)
+	at org.apache.spark.util.SparkFileUtils.createTempDir$(SparkFileUtils.scala:102)
+	at org.apache.spark.util.Utils$.createTempDir(Utils.scala:94)
+	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:377)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:969)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:199)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:222)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1125)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1134)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:467)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:438)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:515)
+	... 25 more
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\spark_session.py", line 18, in get_spark_session
+    .getOrCreate()
+     ^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\session.py", line 497, in getOrCreate
+    sc = SparkContext.getOrCreate(sparkConf)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\context.py", line 515, in getOrCreate
+    SparkContext(conf=conf or SparkConf())
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\context.py", line 203, in __init__
+    self._do_init(
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\context.py", line 296, in _do_init
+    self._jsc = jsc or self._initialize_context(self._conf._jconf)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\context.py", line 421, in _initialize_context
+    return self._jvm.JavaSparkContext(jconf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1587, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
+: java.lang.RuntimeException: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.getWinUtilsPath(Shell.java:735)
+	at org.apache.hadoop.util.Shell.getSetPermissionCommand(Shell.java:270)
+	at org.apache.hadoop.fs.FileUtil.chmod(FileUtil.java:1139)
+	at org.apache.hadoop.fs.FileUtil.chmod(FileUtil.java:1125)
+	at org.apache.spark.util.Utils$.fetchFile(Utils.scala:489)
+	at org.apache.spark.executor.Executor.$anonfun$updateDependencies$14(Executor.scala:1163)
+	at org.apache.spark.executor.Executor.$anonfun$updateDependencies$14$adapted(Executor.scala:1155)
+	at scala.collection.TraversableLike$WithFilter.$anonfun$foreach$1(TraversableLike.scala:985)
+	at scala.collection.immutable.Map$Map1.foreach(Map.scala:193)
+	at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:984)
+	at org.apache.spark.executor.Executor.updateDependencies(Executor.scala:1155)
+	at org.apache.spark.executor.Executor.<init>(Executor.scala:330)
+	at org.apache.spark.scheduler.local.LocalEndpoint.<init>(LocalSchedulerBackend.scala:64)
+	at org.apache.spark.scheduler.local.LocalSchedulerBackend.start(LocalSchedulerBackend.scala:132)
+	at org.apache.spark.scheduler.TaskSchedulerImpl.start(TaskSchedulerImpl.scala:235)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:599)
+	at org.apache.spark.api.java.JavaSparkContext.<init>(JavaSparkContext.scala:58)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:75)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:53)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:247)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:238)
+	at py4j.commands.ConstructorCommand.invokeConstructor(ConstructorCommand.java:80)
+	at py4j.commands.ConstructorCommand.execute(ConstructorCommand.java:69)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:547)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:568)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:591)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:688)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getTimeDurationHelper(Configuration.java:1907)
+	at org.apache.hadoop.conf.Configuration.getTimeDuration(Configuration.java:1867)
+	at org.apache.hadoop.conf.Configuration.getTimeDuration(Configuration.java:1840)
+	at org.apache.hadoop.util.ShutdownHookManager.getShutdownTimeout(ShutdownHookManager.java:183)
+	at org.apache.hadoop.util.ShutdownHookManager$HookEntry.<init>(ShutdownHookManager.java:207)
+	at org.apache.hadoop.util.ShutdownHookManager.addShutdownHook(ShutdownHookManager.java:304)
+	at org.apache.spark.util.SparkShutdownHookManager.install(ShutdownHookManager.scala:181)
+	at org.apache.spark.util.ShutdownHookManager$.shutdownHooks$lzycompute(ShutdownHookManager.scala:50)
+	at org.apache.spark.util.ShutdownHookManager$.shutdownHooks(ShutdownHookManager.scala:48)
+	at org.apache.spark.util.ShutdownHookManager$.addShutdownHook(ShutdownHookManager.scala:153)
+	at org.apache.spark.util.ShutdownHookManager$.<init>(ShutdownHookManager.scala:58)
+	at org.apache.spark.util.ShutdownHookManager$.<clinit>(ShutdownHookManager.scala)
+	at org.apache.spark.util.Utils$.createTempDir(Utils.scala:242)
+	at org.apache.spark.util.SparkFileUtils.createTempDir(SparkFileUtils.scala:103)
+	at org.apache.spark.util.SparkFileUtils.createTempDir$(SparkFileUtils.scala:102)
+	at org.apache.spark.util.Utils$.createTempDir(Utils.scala:94)
+	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:377)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:969)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:199)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:222)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1125)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1134)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:467)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:438)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:515)
+	... 25 more
+
+2025-05-11 15:32:25,514 [INFO] Closing down clientserver connection
+2025-05-11 15:48:00,409 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'airline_sk'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 98, in transform_fact_flight
+    airline_dim_df.airline_sk
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'airline_sk'
+2025-05-11 15:48:00,422 [INFO] Closing down clientserver connection
+2025-05-11 16:24:49,252 [ERROR] ETL process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `name` cannot be resolved. Did you mean one of the following? [`id`, `carrier`, `airline_name`].;
+'Project [trim(carrier#1, None) AS carrier#256, trim('name, None) AS name#257]
++- Relation [id#0,carrier#1,airline_name#2] JDBCRelation(airline) [numPartitions=1]
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 13, in run_transformations
+    dim_airline_df = transform_airline_dim(raw_data["airline"])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\dimensions\dim_airline.py", line 28, in transform_airline_dim
+    .select(
+     ^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `name` cannot be resolved. Did you mean one of the following? [`id`, `carrier`, `airline_name`].;
+'Project [trim(carrier#1, None) AS carrier#256, trim('name, None) AS name#257]
++- Relation [id#0,carrier#1,airline_name#2] JDBCRelation(airline) [numPartitions=1]
+
+2025-05-11 16:24:49,282 [INFO] Closing down clientserver connection
+2025-05-11 16:29:43,602 [INFO]  Starting data extraction
+2025-05-11 16:29:48,603 [INFO]  Data extraction completed
+2025-05-11 16:29:48,603 [INFO]  Starting data transformation
+2025-05-11 16:29:49,016 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'aircraft_sk'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 108, in transform_fact_flight
+    aircraft_dim_df.aircraft_sk
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'aircraft_sk'
+2025-05-11 16:29:49,030 [INFO] Closing down clientserver connection
+2025-05-11 16:58:16,635 [INFO]  Starting data extraction
+2025-05-11 16:58:22,477 [INFO]  Data extraction completed
+2025-05-11 16:58:22,477 [INFO]  Starting data transformation
+2025-05-11 16:58:23,069 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'aircraft_sk'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 108, in transform_fact_flight
+    aircraft_dim_df.aircraft_sk
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'aircraft_sk'
+2025-05-11 16:58:23,084 [INFO] Closing down clientserver connection
+2025-05-11 16:58:32,237 [INFO]  Starting data extraction
+2025-05-11 16:58:38,266 [INFO]  Data extraction completed
+2025-05-11 16:58:38,266 [INFO]  Starting data transformation
+2025-05-11 16:58:38,731 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'aircraft_sk'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 108, in transform_fact_flight
+    aircraft_dim_df.aircraft_sk
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'aircraft_sk'
+2025-05-11 16:58:38,745 [INFO] Closing down clientserver connection
+2025-05-11 17:00:16,920 [INFO]  Starting data extraction
+2025-05-11 17:00:22,125 [INFO]  Data extraction completed
+2025-05-11 17:00:22,126 [INFO]  Starting data transformation
+2025-05-11 17:00:22,612 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'route_sk'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 119, in transform_fact_flight
+    route_dim_df.route_sk
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'route_sk'
+2025-05-11 17:00:22,624 [INFO] Closing down clientserver connection
+2025-05-11 17:02:36,273 [INFO]  Starting data extraction
+2025-05-11 17:02:42,166 [INFO]  Data extraction completed
+2025-05-11 17:02:42,167 [INFO]  Starting data transformation
+2025-05-11 17:02:42,648 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'dep_delay'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 125, in transform_fact_flight
+    fact_flight.dep_delay == dep_delay_dim_df.dep_delay,
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'dep_delay'
+2025-05-11 17:02:42,660 [INFO] Closing down clientserver connection
+2025-05-18 12:46:27,964 [INFO]  Starting data extraction
+2025-05-18 12:46:33,658 [INFO]  Data extraction completed
+2025-05-18 12:46:33,658 [INFO]  Starting data transformation
+2025-05-18 12:46:35,885 [ERROR] ETL process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `aircraft_fk` cannot be resolved. Did you mean one of the following? [`air_time`, `arr_time`, `carrier`, `day`, `distance`].;
+'Project [id#164 AS flight_source_id#486, air_time#182, flight_num#178, 'aircraft_fk, 'route_fk, 'dep_delay_fk, 'arr_delay_fk, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185]
++- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 54, in transform_fact_flight
+    fact_flight = flight_df.select(
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `aircraft_fk` cannot be resolved. Did you mean one of the following? [`air_time`, `arr_time`, `carrier`, `day`, `distance`].;
+'Project [id#164 AS flight_source_id#486, air_time#182, flight_num#178, 'aircraft_fk, 'route_fk, 'dep_delay_fk, 'arr_delay_fk, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185]
++- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+
+2025-05-18 12:46:35,929 [INFO] Closing down clientserver connection
+2025-05-18 13:44:34,831 [INFO]  Starting data extraction
+2025-05-18 13:44:40,059 [INFO]  Data extraction completed
+2025-05-18 13:44:40,059 [INFO]  Starting data transformation
+2025-05-18 13:44:42,217 [ERROR] ETL process failed: 'DataFrame' object has no attribute 'dep_delay_time'
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 68, in transform_fact_flight
+    fact_flight.dep_delay_time == dim_dep_delay_df.dep_delay_time,
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3129, in __getattr__
+    raise AttributeError(
+AttributeError: 'DataFrame' object has no attribute 'dep_delay_time'
+2025-05-18 13:44:42,237 [INFO] Closing down clientserver connection
+2025-05-18 13:48:00,407 [INFO]  Starting data extraction
+2025-05-18 13:48:05,275 [INFO]  Data extraction completed
+2025-05-18 13:48:05,275 [INFO]  Starting data transformation
+2025-05-18 13:48:07,526 [ERROR] ETL process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `dep_delay` cannot be resolved. Did you mean one of the following? [`dep_time`, `day`, `dep_delay_time`, `id`, `year`].;
+'Project [id#164 AS flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, 'dep_delay AS dep_delay_tk#470, 'arr_delay AS arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, distance#183]
++- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 18, in transform_fact_flight
+    fact_flight = flight_df.select(
+                  ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `dep_delay` cannot be resolved. Did you mean one of the following? [`dep_time`, `day`, `dep_delay_time`, `id`, `year`].;
+'Project [id#164 AS flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, 'dep_delay AS dep_delay_tk#470, 'arr_delay AS arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, distance#183]
++- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+
+2025-05-18 13:48:07,548 [INFO] Closing down clientserver connection
+2025-05-18 13:49:41,731 [INFO]  Starting data extraction
+2025-05-18 13:49:46,714 [INFO]  Data extraction completed
+2025-05-18 13:49:46,714 [INFO]  Starting data transformation
+2025-05-18 13:49:48,991 [ERROR] ETL process failed: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 101, in transform_fact_flight
+    final_fact_flight = fact_flight.select(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+2025-05-18 13:49:49,010 [INFO] Closing down clientserver connection
+2025-05-18 22:05:31,507 [INFO]  Starting data extraction
+2025-05-18 22:05:37,224 [INFO]  Data extraction completed
+2025-05-18 22:05:37,224 [INFO]  Starting data transformation
+2025-05-18 22:05:39,692 [ERROR] ETL process failed: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 101, in transform_fact_flight
+    final_fact_flight = fact_flight.select(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+2025-05-18 22:05:39,736 [INFO] Closing down clientserver connection
+2025-05-18 22:06:55,929 [INFO]  Starting data extraction
+2025-05-18 22:07:01,333 [INFO]  Data extraction completed
+2025-05-18 22:07:01,333 [INFO]  Starting data transformation
+2025-05-18 22:07:03,818 [ERROR] ETL process failed: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 101, in transform_fact_flight
+    final_fact_flight = fact_flight.select(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+2025-05-18 22:07:03,841 [INFO] Closing down clientserver connection
+2025-05-19 10:54:08,473 [INFO]  Starting data extraction
+2025-05-19 10:54:14,562 [INFO]  Data extraction completed
+2025-05-19 10:54:14,563 [INFO]  Starting data transformation
+2025-05-19 10:54:17,140 [ERROR] ETL process failed: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 101, in transform_fact_flight
+    final_fact_flight = fact_flight.select(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [AMBIGUOUS_REFERENCE] Reference `distance` is ambiguous, could be: [`distance`, `distance`].
+2025-05-19 10:54:17,194 [INFO] Closing down clientserver connection
+2025-05-19 11:08:40,315 [INFO]  Starting data extraction
+2025-05-19 11:08:45,832 [INFO]  Data extraction completed
+2025-05-19 11:08:45,833 [INFO]  Starting data transformation
+2025-05-19 11:08:48,221 [ERROR] ETL process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `airline_sk` cannot be resolved. Did you mean one of the following? [`airline_fk`, `airline_tk`, `airline_name`, `air_time`, `flight_sk`].;
+'Project [flight_sk#1149L, 'airline_sk, 'aircraft_sk, 'route_sk, 'dep_delay_sk, 'arr_delay_sk, 'date_sk, 'time_sk, air_time#182, flight_distance#472, flight_num#178]
++- Project [flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, dep_delay_tk#470, arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, flight_distance#472, airline_tk#260L, carrier#1, airline_name#2, source_id#256, ... 36 more fields]
+   +- Join LeftOuter, ((dep_time#169 = dep_time#1006) AND (sched_dep_time#170 = sched_dep_time#1007))
+      :- Join LeftOuter, ((((year#165 = year#868) AND (month#166 = month#869)) AND (day#167 = day#870)) AND (day_of_week#168 = day_of_week#871))
+      :  :- Join LeftOuter, (arr_delay_tk#471 = cast(arr_delay_tk#380L as double))
+      :  :  :- Join LeftOuter, (dep_delay_tk#470 = cast(dep_delay_tk#356L as double))
+      :  :  :  :- Join LeftOuter, ((trim(origin#180, None) = trim(origin#29, None)) AND (trim(destination#181, None) = trim(destination#30, None)))
+      :  :  :  :  :- Join LeftOuter, (trim(tailnum#179, None) = trim(tailnum#15, None))
+      :  :  :  :  :  :- Join LeftOuter, (trim(carrier#177, None) = trim(carrier#1, None))
+      :  :  :  :  :  :  :- Project [id#164 AS flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, dep_delay_time#171 AS dep_delay_tk#470, arr_delay_time#175 AS arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, distance#183 AS flight_distance#472]
+      :  :  :  :  :  :  :  +- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+      :  :  :  :  :  :  +- Project [airline_tk#260L, carrier#1, airline_name#2, source_id#256]
+      :  :  :  :  :  :     +- Project [source_id#256, carrier#1, airline_name#2, (monotonically_increasing_id() + cast(1 as bigint)) AS airline_tk#260L]
+      :  :  :  :  :  :        +- Project [id#0 AS source_id#256, carrier#1, airline_name#2]
+      :  :  :  :  :  :           +- Relation [id#0,carrier#1,airline_name#2] JDBCRelation(airline) [numPartitions=1]
+      :  :  :  :  :  +- Project [aircraft_tk#282L, tailnum#15, source_id#278, airline_fk#16]
+      :  :  :  :  :     +- Project [source_id#278, tailnum#15, airline_fk#16, (monotonically_increasing_id() + cast(1 as bigint)) AS aircraft_tk#282L]
+      :  :  :  :  :        +- Project [id#14 AS source_id#278, tailnum#15, airline_fk#16]
+      :  :  :  :  :           +- Relation [id#14,tailnum#15,airline_fk#16] JDBCRelation(aircraft) [numPartitions=1]
+      :  :  :  :  +- Project [route_tk#311L, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37 AS route_distance#597, source_id#300]
+      :  :  :  :     +- Project [route_tk#311L, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37, source_id#300]
+      :  :  :  :        +- Project [source_id#300, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37, (monotonically_increasing_id() + cast(1 as bigint)) AS route_tk#311L]
+      :  :  :  :           +- Project [id#28 AS source_id#300, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37]
+      :  :  :  :              +- Relation [id#28,origin#29,destination#30,departure_city#31,departure_country#32,departure_airport_name#33,destination_city#34,destination_country#35,destination_airport_name#36,distance#37] JDBCRelation(route) [numPartitions=1]
+      :  :  :  +- Project [dep_delay_tk#356L, reason#351, delay_time#352, source_id#350]
+      :  :  :     +- Project [source_id#350, reason#351, delay_time#352, (monotonically_increasing_id() + cast(1 as bigint)) AS dep_delay_tk#356L]
+      :  :  :        +- Project [id#63 AS source_id#350, reason_dep_delay#64 AS reason#351, dep_delay_time#65 AS delay_time#352]
+      :  :  :           +- Relation [id#63,reason_dep_delay#64,dep_delay_time#65] JDBCRelation(dep_delay) [numPartitions=1]
+      :  :  +- Project [arr_delay_tk#380L, reason#375, delay_time#376, source_id#374]
+      :  :     +- Project [source_id#374, reason#375, delay_time#376, (monotonically_increasing_id() + cast(1 as bigint)) AS arr_delay_tk#380L]
+      :  :        +- Project [id#77 AS source_id#374, reason_arr_delay#78 AS reason#375, arr_delay_time#79 AS delay_time#376]
+      :  :           +- Relation [id#77,reason_arr_delay#78,arr_delay_time#79] JDBCRelation(arr_delay) [numPartitions=1]
+      :  +- Project [date_tk#404, year#868, month#869, day#870, day_of_week#871]
+      :     +- Project [year#868, month#869, day#870, day_of_week#871, date_tk#404]
+      :        +- Project [year#868, month#869, day#870, day_of_week#871, date_tk#404, date_tk#404]
+      :           +- Window [row_number() windowspecdefinition(year#868 ASC NULLS FIRST, month#869 ASC NULLS FIRST, day#870 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS date_tk#404], [year#868 ASC NULLS FIRST, month#869 ASC NULLS FIRST, day#870 ASC NULLS FIRST]
+      :              +- Project [year#868, month#869, day#870, day_of_week#871]
+      :                 +- Deduplicate [year#868, month#869, day#870, day_of_week#871]
+      :                    +- Project [year#868, month#869, day#870, day_of_week#871]
+      :                       +- Relation [id#867,year#868,month#869,day#870,day_of_week#871,dep_time#872,sched_dep_time#873,dep_delay_time#874,reason_dep_delay#875,arr_time#876,sched_arr_time#877,arr_delay_time#878,reason_arr_delay#879,carrier#880,flight_num#881,tailnum#882,origin#883,destination#884,air_time#885,distance#886,hour#887,minute#888,airline_name#889,departure_city#890,... 5 more fields] csv
+      +- Project [time_tk#436, dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+         +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022, time_tk#436]
+            +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022, time_tk#436, time_tk#436]
+               +- Window [row_number() windowspecdefinition(hour#1021 ASC NULLS FIRST, minute#1022 ASC NULLS FIRST, sched_dep_time#1007 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS time_tk#436], [hour#1021 ASC NULLS FIRST, minute#1022 ASC NULLS FIRST, sched_dep_time#1007 ASC NULLS FIRST]
+                  +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+                     +- Deduplicate [sched_arr_time#1011, minute#1022, dep_time#1006, arr_time#1010, hour#1021, sched_dep_time#1007]
+                        +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+                           +- Relation [id#1001,year#1002,month#1003,day#1004,day_of_week#1005,dep_time#1006,sched_dep_time#1007,dep_delay_time#1008,reason_dep_delay#1009,arr_time#1010,sched_arr_time#1011,arr_delay_time#1012,reason_arr_delay#1013,carrier#1014,flight_num#1015,tailnum#1016,origin#1017,destination#1018,air_time#1019,distance#1020,hour#1021,minute#1022,airline_name#1023,departure_city#1024,... 5 more fields] csv
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\main.py", line 57, in main
+    load_ready_dict = run_transformations(merged_df)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\pipeline.py", line 41, in run_transformations
+    fact_flight_df = transform_fact_flight(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\transform\facts\fact_flight.py", line 102, in transform_fact_flight
+    final_fact_flight = fact_flight.select(
+                        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\sql\dataframe.py", line 3229, in select
+    jdf = self._jdf.select(self._jcols(*cols))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\py4j\java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "C:\Users\gabri\AppData\Local\Programs\Python\Python311\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `airline_sk` cannot be resolved. Did you mean one of the following? [`airline_fk`, `airline_tk`, `airline_name`, `air_time`, `flight_sk`].;
+'Project [flight_sk#1149L, 'airline_sk, 'aircraft_sk, 'route_sk, 'dep_delay_sk, 'arr_delay_sk, 'date_sk, 'time_sk, air_time#182, flight_distance#472, flight_num#178]
++- Project [flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, dep_delay_tk#470, arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, flight_distance#472, airline_tk#260L, carrier#1, airline_name#2, source_id#256, ... 36 more fields]
+   +- Join LeftOuter, ((dep_time#169 = dep_time#1006) AND (sched_dep_time#170 = sched_dep_time#1007))
+      :- Join LeftOuter, ((((year#165 = year#868) AND (month#166 = month#869)) AND (day#167 = day#870)) AND (day_of_week#168 = day_of_week#871))
+      :  :- Join LeftOuter, (arr_delay_tk#471 = cast(arr_delay_tk#380L as double))
+      :  :  :- Join LeftOuter, (dep_delay_tk#470 = cast(dep_delay_tk#356L as double))
+      :  :  :  :- Join LeftOuter, ((trim(origin#180, None) = trim(origin#29, None)) AND (trim(destination#181, None) = trim(destination#30, None)))
+      :  :  :  :  :- Join LeftOuter, (trim(tailnum#179, None) = trim(tailnum#15, None))
+      :  :  :  :  :  :- Join LeftOuter, (trim(carrier#177, None) = trim(carrier#1, None))
+      :  :  :  :  :  :  :- Project [id#164 AS flight_source_id#469, carrier#177, tailnum#179, origin#180, destination#181, dep_delay_time#171 AS dep_delay_tk#470, arr_delay_time#175 AS arr_delay_tk#471, year#165, month#166, day#167, day_of_week#168, dep_time#169, arr_time#173, sched_dep_time#170, sched_arr_time#174, hour#184, minute#185, air_time#182, flight_num#178, distance#183 AS flight_distance#472]
+      :  :  :  :  :  :  :  +- Relation [id#164,year#165,month#166,day#167,day_of_week#168,dep_time#169,sched_dep_time#170,dep_delay_time#171,reason_dep_delay#172,arr_time#173,sched_arr_time#174,arr_delay_time#175,reason_arr_delay#176,carrier#177,flight_num#178,tailnum#179,origin#180,destination#181,air_time#182,distance#183,hour#184,minute#185,airline_name#186,departure_city#187,... 5 more fields] csv
+      :  :  :  :  :  :  +- Project [airline_tk#260L, carrier#1, airline_name#2, source_id#256]
+      :  :  :  :  :  :     +- Project [source_id#256, carrier#1, airline_name#2, (monotonically_increasing_id() + cast(1 as bigint)) AS airline_tk#260L]
+      :  :  :  :  :  :        +- Project [id#0 AS source_id#256, carrier#1, airline_name#2]
+      :  :  :  :  :  :           +- Relation [id#0,carrier#1,airline_name#2] JDBCRelation(airline) [numPartitions=1]
+      :  :  :  :  :  +- Project [aircraft_tk#282L, tailnum#15, source_id#278, airline_fk#16]
+      :  :  :  :  :     +- Project [source_id#278, tailnum#15, airline_fk#16, (monotonically_increasing_id() + cast(1 as bigint)) AS aircraft_tk#282L]
+      :  :  :  :  :        +- Project [id#14 AS source_id#278, tailnum#15, airline_fk#16]
+      :  :  :  :  :           +- Relation [id#14,tailnum#15,airline_fk#16] JDBCRelation(aircraft) [numPartitions=1]
+      :  :  :  :  +- Project [route_tk#311L, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37 AS route_distance#597, source_id#300]
+      :  :  :  :     +- Project [route_tk#311L, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37, source_id#300]
+      :  :  :  :        +- Project [source_id#300, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37, (monotonically_increasing_id() + cast(1 as bigint)) AS route_tk#311L]
+      :  :  :  :           +- Project [id#28 AS source_id#300, origin#29, destination#30, departure_city#31, departure_country#32, departure_airport_name#33, destination_city#34, destination_country#35, destination_airport_name#36, distance#37]
+      :  :  :  :              +- Relation [id#28,origin#29,destination#30,departure_city#31,departure_country#32,departure_airport_name#33,destination_city#34,destination_country#35,destination_airport_name#36,distance#37] JDBCRelation(route) [numPartitions=1]
+      :  :  :  +- Project [dep_delay_tk#356L, reason#351, delay_time#352, source_id#350]
+      :  :  :     +- Project [source_id#350, reason#351, delay_time#352, (monotonically_increasing_id() + cast(1 as bigint)) AS dep_delay_tk#356L]
+      :  :  :        +- Project [id#63 AS source_id#350, reason_dep_delay#64 AS reason#351, dep_delay_time#65 AS delay_time#352]
+      :  :  :           +- Relation [id#63,reason_dep_delay#64,dep_delay_time#65] JDBCRelation(dep_delay) [numPartitions=1]
+      :  :  +- Project [arr_delay_tk#380L, reason#375, delay_time#376, source_id#374]
+      :  :     +- Project [source_id#374, reason#375, delay_time#376, (monotonically_increasing_id() + cast(1 as bigint)) AS arr_delay_tk#380L]
+      :  :        +- Project [id#77 AS source_id#374, reason_arr_delay#78 AS reason#375, arr_delay_time#79 AS delay_time#376]
+      :  :           +- Relation [id#77,reason_arr_delay#78,arr_delay_time#79] JDBCRelation(arr_delay) [numPartitions=1]
+      :  +- Project [date_tk#404, year#868, month#869, day#870, day_of_week#871]
+      :     +- Project [year#868, month#869, day#870, day_of_week#871, date_tk#404]
+      :        +- Project [year#868, month#869, day#870, day_of_week#871, date_tk#404, date_tk#404]
+      :           +- Window [row_number() windowspecdefinition(year#868 ASC NULLS FIRST, month#869 ASC NULLS FIRST, day#870 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS date_tk#404], [year#868 ASC NULLS FIRST, month#869 ASC NULLS FIRST, day#870 ASC NULLS FIRST]
+      :              +- Project [year#868, month#869, day#870, day_of_week#871]
+      :                 +- Deduplicate [year#868, month#869, day#870, day_of_week#871]
+      :                    +- Project [year#868, month#869, day#870, day_of_week#871]
+      :                       +- Relation [id#867,year#868,month#869,day#870,day_of_week#871,dep_time#872,sched_dep_time#873,dep_delay_time#874,reason_dep_delay#875,arr_time#876,sched_arr_time#877,arr_delay_time#878,reason_arr_delay#879,carrier#880,flight_num#881,tailnum#882,origin#883,destination#884,air_time#885,distance#886,hour#887,minute#888,airline_name#889,departure_city#890,... 5 more fields] csv
+      +- Project [time_tk#436, dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+         +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022, time_tk#436]
+            +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022, time_tk#436, time_tk#436]
+               +- Window [row_number() windowspecdefinition(hour#1021 ASC NULLS FIRST, minute#1022 ASC NULLS FIRST, sched_dep_time#1007 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS time_tk#436], [hour#1021 ASC NULLS FIRST, minute#1022 ASC NULLS FIRST, sched_dep_time#1007 ASC NULLS FIRST]
+                  +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+                     +- Deduplicate [sched_arr_time#1011, minute#1022, dep_time#1006, arr_time#1010, hour#1021, sched_dep_time#1007]
+                        +- Project [dep_time#1006, arr_time#1010, sched_dep_time#1007, sched_arr_time#1011, hour#1021, minute#1022]
+                           +- Relation [id#1001,year#1002,month#1003,day#1004,day_of_week#1005,dep_time#1006,sched_dep_time#1007,dep_delay_time#1008,reason_dep_delay#1009,arr_time#1010,sched_arr_time#1011,arr_delay_time#1012,reason_arr_delay#1013,carrier#1014,flight_num#1015,tailnum#1016,origin#1017,destination#1018,air_time#1019,distance#1020,hour#1021,minute#1022,airline_name#1023,departure_city#1024,... 5 more fields] csv
+
+2025-05-19 11:08:48,244 [INFO] Closing down clientserver connection
+2025-05-19 11:15:59,156 [ERROR] ETL process failed: MySQL connector JAR not found at: D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:18:46,869 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:20:09,963 [INFO]  Starting data extraction
+2025-05-19 11:20:13,019 [ERROR] CSV file not found: D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint2\flights_najbolji_PROCESSED_20.csv
+2025-05-19 11:20:13,019 [ERROR] ETL process failed: CSV file not found: D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint2\flights_najbolji_PROCESSED_20.csv
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 38, in main
+    raise FileNotFoundError(f"CSV file not found: {csv_path}")
+FileNotFoundError: CSV file not found: D:\fax_\treca_godina\skladistenje_rudarenje\checkpoint2\flights_najbolji_PROCESSED_20.csv
+2025-05-19 11:20:13,030 [INFO] Closing down clientserver connection
+2025-05-19 11:21:38,749 [ERROR] ETL process failed: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:21:43,180 [ERROR] ETL process failed: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:22:50,724 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:23:05,122 [ERROR] ETL process failed: MySQL connector JAR not found at: \connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: \connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:25:18,507 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 15, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:29:32,058 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 16, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:31:09,322 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 16, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:31:27,700 [ERROR] ETL process failed: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 26, in main
+    spark = get_spark_session()
+            ^^^^^^^^^^^^^^^^^^^
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\spark_session.py", line 16, in get_spark_session
+    raise FileNotFoundError(f"MySQL connector JAR not found at: {connector_path}")
+FileNotFoundError: MySQL connector JAR not found at: ..\connectors\mysql-connector-j-9.2.0.jar
+2025-05-19 11:33:18,859 [INFO]  Starting data extraction
+2025-05-19 11:33:22,413 [ERROR] CSV file not found: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint2lights_najbolji_PROCESSED_20.csv
+2025-05-19 11:33:22,413 [ERROR] ETL process failed: CSV file not found: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint2lights_najbolji_PROCESSED_20.csv
+Traceback (most recent call last):
+  File "D:\fax_\treca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint4\main.py", line 38, in main
+    raise FileNotFoundError(f"CSV file not found: {csv_path}")
+FileNotFoundError: CSV file not found: D:ax_	reca_godina\skladistenje_rudarenje\SRP_Projekt\checkpoint2lights_najbolji_PROCESSED_20.csv
+2025-05-19 11:33:22,426 [INFO] Closing down clientserver connection
