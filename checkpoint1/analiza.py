@@ -1,32 +1,31 @@
 import pandas as pd
 import os
 
-# === KORAK 1: Definiraj relativnu putanju do datoteke ===
+# Definirali smo relativnu putanju do datoteke
+datoteka = os.path.join(os.path.dirname(__file__), "flights_main.csv")
 
-datoteka = os.path.join(os.path.dirname(__file__), "flights.csv")
-
-# === KORAK 2: Učitaj podatke ===
+# Učitali smo podatke iz CSV datoteke
 data = pd.read_csv(datoteka, encoding="utf-8")
 
-# === KORAK 3: Prikazi osnovne informacije ===
-print(data.head())  
+# Prikazali smo osnovne informacije o podacima
+print(data.head())
 print("Veličina skupa podataka:", data.shape)
 print("Nazivi stupaca:", data.columns.tolist())
 
-# === KORAK 4: Nedostajuće vrijednosti ===
+# Provjerili smo nedostajuće vrijednosti
 print("Nedostajuće vrijednosti po stupcu:")
 print(data.isna().sum())
 
-# === KORAK 5: Jedinstvene vrijednosti po stupcu (prvih 10) ===
+# Ispisali smo jedinstvene vrijednosti za svaki stupac
 print("Jedinstvene vrijednosti po stupcu:")
 for column in data.columns:
-    print(f"{column}: {data[column].unique()[:10]} ...")
+   print(f"{column}: {data[column].unique()[:10]} ...")
 
-# === KORAK 6: Tipovi podataka ===
+# Provjerili smo tipove podataka
 print(data.dtypes)
 
-# === KORAK 7: Frekvencije vrijednosti po stupcu ===
+# Analizirali smo frekvencije vrijednosti po stupcima
 print("Frekvencije vrijednosti po stupcu:")
 for column in data.columns:
-    print(f"{column}:")
-    print(data[column].value_counts(), "\n")
+   print(f"{column}:")
+   print(data[column].value_counts(), "\n")

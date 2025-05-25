@@ -1,32 +1,31 @@
+# kod za stvaranje dimenzijskog model(star sheme) : 
+
 from sqlalchemy import create_engine, Column, Integer, Float, String, BigInteger, ForeignKey
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/dimenzijski_model"  # Ispravka: schema name
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/dimenzijski_model"  
 engine = create_engine(DATABASE_URL, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
 Base = declarative_base()
 
-# ----------------------
-# DIMENZIJE
-# ----------------------
 
 class DimAirline(Base):
     __tablename__ = 'dim_airline'
-    airline_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    airline_tk = Column(BigInteger, primary_key=True, autoincrement=True) 
     carrier = Column(String(3), nullable=False)
     airline_name = Column(String(100), nullable=False)
 
 class DimAircraft(Base):
     __tablename__ = 'dim_aircraft'
-    aircraft_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    aircraft_tk = Column(BigInteger, primary_key=True, autoincrement=True)  
     tailnum = Column(String(10), nullable=False)
 
 class DimRoute(Base):
     __tablename__ = 'dim_route'
-    route_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    route_tk = Column(BigInteger, primary_key=True, autoincrement=True) 
     origin = Column(String(5), nullable=False)
     destination = Column(String(5), nullable=False)
     departure_city = Column(String(50))
@@ -39,50 +38,47 @@ class DimRoute(Base):
 
 class DimDepDelay(Base):
     __tablename__ = 'dim_dep_delay'
-    dep_delay_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    dep_delay_tk = Column(BigInteger, primary_key=True, autoincrement=True)  
     reason = Column(String(50))
     delay_time = Column(Float)
 
 class DimArrDelay(Base):
     __tablename__ = 'dim_arr_delay'
-    arr_delay_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    arr_delay_tk = Column(BigInteger, primary_key=True, autoincrement=True)  
     reason = Column(String(50))
     delay_time = Column(Float)
 
 class DimDate(Base):
     __tablename__ = 'dim_date'
-    date_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    date_tk = Column(BigInteger, primary_key=True, autoincrement=True)  
     year = Column(Integer)
     month = Column(Integer)
     day = Column(Integer)
     day_of_week = Column(String(10))
-    # DODANO: Korisni datumski atributi za lakše analize
-    quarter = Column(Integer)  # Q1, Q2, Q3, Q4
-    month_name = Column(String(15))  # January, February, etc.
-    is_weekend = Column(Integer)  # 0/1 flag
+    
+    quarter = Column(Integer)  
+    month_name = Column(String(15))  
+    is_weekend = Column(Integer)  
 
 class DimTime(Base):
     __tablename__ = 'dim_time'
-    time_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
+    time_tk = Column(BigInteger, primary_key=True, autoincrement=True) 
     dep_time = Column(String(10))
     arr_time = Column(String(10))
     sched_dep_time = Column(String(10))
     sched_arr_time = Column(String(10))
     hour = Column(Integer)
     minute = Column(Integer)
-    # DODANO: Korisni vremenski atributi
-    time_of_day = Column(String(20))  # Morning, Afternoon, Evening, Night
-    is_peak_hour = Column(Integer)  # 0/1 flag za rush hour
+  
+    time_of_day = Column(String(20))  
+    is_peak_hour = Column(Integer) 
 
-# ----------------------
-# ČINJENICA
-# ----------------------
+
 
 class FactFlight(Base):
     __tablename__ = 'fact_flight'
-    flight_tk = Column(BigInteger, primary_key=True, autoincrement=True)  # Dodao autoincrement
-    
-    # Foreign Keys (Dimension References)
+    flight_tk = Column(BigInteger, primary_key=True, autoincrement=True) 
+  
     airline_id = Column(BigInteger, ForeignKey('dim_airline.airline_tk'))
     aircraft_id = Column(BigInteger, ForeignKey('dim_aircraft.aircraft_tk'))
     route_id = Column(BigInteger, ForeignKey('dim_route.route_tk'))
@@ -91,19 +87,15 @@ class FactFlight(Base):
     date_id = Column(BigInteger, ForeignKey('dim_date.date_tk'))
     time_id = Column(BigInteger, ForeignKey('dim_time.time_tk'))
     
-    # Measures (Metrics for Analysis)
+   
     air_time = Column(Float)
     flight_num = Column(Integer)
-    # DODANO: Dodatne mere za analizu
-    scheduled_duration = Column(Float)  # Planirano trajanje leta
-    actual_duration = Column(Float)     # Stvarno trajanje leta
-    on_time_flag = Column(Integer)      # 0/1 da li je let bio na vreme
     
-# ----------------------
-# KREIRANJE TABLICA
-# ----------------------
+    scheduled_duration = Column(Float) 
+    actual_duration = Column(Float)    
+    on_time_flag = Column(Integer)      
+    
 
-# Kreiranje baze podataka ako ne postoji
 from sqlalchemy import text
 with engine.connect() as conn:
     conn.execute(text("CREATE DATABASE IF NOT EXISTS dimenzijski_model"))
@@ -112,7 +104,7 @@ with engine.connect() as conn:
 Base.metadata.create_all(engine)
 print("Dimenzijski model kreiran u bazi 'dimenzijski_model'.")
 
-# Prikaz strukture
+
 print("\n=== DIMENSIONAL MODEL STRUKTURA ===")
 print("DIMENZIJE:")
 print("- dim_airline (aviokompanija)")

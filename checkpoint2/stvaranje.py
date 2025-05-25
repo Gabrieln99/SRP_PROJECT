@@ -1,3 +1,5 @@
+# kod za stvaranje i popunjavanje sql tablica: 
+
 # Imports
 import pandas as pd
 import json
