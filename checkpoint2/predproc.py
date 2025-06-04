@@ -1,10 +1,8 @@
 import pandas as pd
 
-# Odredili smo putanju do CSV datoteke
-CSV_FILE_PATH = "flights_main.csv"
+CSV_FILE_PATH = "flights_main.csv" # Odredili smo putanju do CSV datoteke
 
-# Učitali smo podatke i ispisali dimenzije
-df = pd.read_csv(CSV_FILE_PATH, delimiter=',')
+df = pd.read_csv(CSV_FILE_PATH, delimiter=',') # Učitali smo podatke i ispisali dimenzije
 print("CSV size before: ", df.shape)
 
 # Standardizirali smo nazive zemalja
@@ -13,24 +11,19 @@ df['destination_country'] = df['destination_country'].replace('USA', 'United Sta
 df['departure_country'] = df['departure_country'].replace('UK', 'United Kingdom')
 df['destination_country'] = df['destination_country'].replace('UK', 'United Kingdom')
 
-# Uklonili smo redove s nedostajućim vrijednostima
-df = df.dropna()
+df = df.dropna() # Uklonili smo redove s nedostajućim vrijednostima
 
-# Pretvorili smo nazive stupaca u mala slova
+# Standardizacija naziva stupaca
 df.columns = df.columns.str.lower()
-
-# Zamijenili smo razmake u nazivima stupaca s donjom crtom
 df.columns = df.columns.str.replace(' ', '_')
 
 print("CSV size after: ", df.shape)
 print(df.head())
 
-# Provjerili smo postojanje duplikata
-duplicates = df.duplicated().sum()
+duplicates = df.duplicated().sum()     # Provjerili smo postojanje duplikata
 print(f"Number of duplicates: {duplicates}")
 
-# Uklonili smo duplikate ako postoje
-if duplicates > 0:
+if duplicates > 0:      # Uklonili smo duplikate ako postoje
    df = df.drop_duplicates()
    print(f"CSV size after removing duplicates: {df.shape}")
 

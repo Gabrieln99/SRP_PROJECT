@@ -52,13 +52,13 @@ class DepDelay(Base):
     __tablename__ = 'dep_delay'
     id = Column(Integer, primary_key=True, autoincrement=True)
     reason_dep_delay = Column(String(50))
-    dep_delay_time = Column(Float)  # VRAĆENO za lakše vizualizacije!
+    dep_delay_time = Column(Float)  
 
 class ArrDelay(Base):
     __tablename__ = 'arr_delay'
     id = Column(Integer, primary_key=True, autoincrement=True)
     reason_arr_delay = Column(String(50))
-    arr_delay_time = Column(Float)  # VRAĆENO za lakše vizualizacije!
+    arr_delay_time = Column(Float)  
 
 class Flight(Base):
     __tablename__ = 'flight'
@@ -86,11 +86,11 @@ Base.metadata.drop_all(engine)  # Brisanje postojećih tablica
 Base.metadata.create_all(engine)  # Stvaranje tablica
 
 Session = sessionmaker(bind=engine)  # Stvaranje sesije
-session = Session()  # Otvori novu sesiju
+session = Session()  # Otvoranje sesije
 
-# --------------------------------------------------------------
+
 # Import podataka
-# --------------------------------------------------------------
+
 
 print("Početak importa podataka...")
 
@@ -107,7 +107,7 @@ print(f"Uneseno {len(airlines_list)} aviokompanija")
 # **2. Umetanje ruta**
 routes = df[['origin', 'destination', 'departure_city', 'departure_country', 
              'departure_airport_name', 'destination_city', 'destination_country', 
-             'destination_airport_name', 'distance']].drop_duplicates()  # Dohvatimo jedinstvene rute
+             'destination_airport_name', 'distance']].drop_duplicates()  # Dohvacamo jedinstvene rute
 
 routes_list = routes.to_dict(orient="records")  # Pretvori u listu rječnika
 
